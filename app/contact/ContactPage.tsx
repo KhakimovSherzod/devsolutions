@@ -13,12 +13,6 @@ export default function ContactPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(formData)
-    alert('Murojaatingiz yuborildi! Tez orada siz bilan bog‘lanamiz.')
-  }
-
   return (
     <>
       <div className='min-h-screen bg-black text-white py-16 px-4 md:py-24 relative z-10'>
@@ -40,7 +34,8 @@ export default function ContactPage() {
 
           {/* Aloqa shakli */}
           <form
-            onSubmit={handleSubmit}
+            action='https://formspree.io/f/mrbrbrge'
+            method='POST'
             className='bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 md:p-10 space-y-6 shadow-2xl'
           >
             <div>

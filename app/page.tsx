@@ -8,7 +8,15 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState('vebsaytlar')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    message: '',
+  })
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
   // Three.js Scene Setup
   useEffect(() => {
     if (!canvasRef.current) return
@@ -491,6 +499,101 @@ const HomePage = () => {
             >
               Bog&apos;lanish
             </button>
+          </div>
+        </div>
+        <div className='mt-20'>
+          <div className='max-w-5xl mx-auto text-center mb-12 md:mb-16'>
+            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 bg-linear-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent'>
+              Biz bilan Aloqa
+            </h2>
+            <p className='text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed'>
+              Biz bilan bog‘laning va biznesingiz uchun zamonaviy
+              <span className='text-blue-400 font-semibold'> dasturiy yechimlar </span>
+              yaratish imkoniyatini muhokama qiling. Sizdan kelgan murojaatlar biz uchun muhim.
+            </p>
+          </div>
+
+          <div className='bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 md:p-10 mx-auto max-w-2xl'>
+            <form action='https://formspree.io/f/mrbrbrge' method='POST' className='space-y-6'>
+              {/* Name */}
+              <div>
+                <label htmlFor='name' className='block text-gray-300 text-sm font-semibold mb-2'>
+                  Ismingiz
+                </label>
+                <input
+                  id='name'
+                  name='name'
+                  type='text'
+                  placeholder='Ismingizni kiriting'
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className='w-full bg-black/40 border border-white/10 focus:border-blue-500 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all'
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label htmlFor='phone' className='block text-gray-300 text-sm font-semibold mb-2'>
+                  Telefon raqamingiz
+                </label>
+                <input
+                  id='phone'
+                  name='phone'
+                  type='tel'
+                  placeholder='+998 90 123 45 67'
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className='w-full bg-black/40 border border-white/10 focus:border-blue-500 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all'
+                />
+              </div>
+
+              {/* Message */}
+              <div>
+                <label htmlFor='message' className='block text-gray-300 text-sm font-semibold mb-2'>
+                  Xabar
+                </label>
+                <textarea
+                  id='message'
+                  name='message'
+                  placeholder='Yordam, xizmat yoki taklif haqida yozing...'
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className='w-full bg-black/40 border border-white/10 focus:border-blue-500 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-all resize-none'
+                />
+              </div>
+
+              {/* Submit */}
+              <button
+                type='submit'
+                className='w-full bg-linear-to-r from-blue-600 via-purple-600 to-cyan-600 hover:opacity-90 text-white font-bold text-lg py-3 rounded-xl transition-all duration-300 shadow-lg hover:scale-105'
+              >
+                Murojaatni yuborish
+              </button>
+            </form>
+
+            {/* Contact Info */}
+            <div className='mt-10 text-center text-gray-300 text-sm sm:text-base space-y-2'>
+              <p>Yoki bevosita bog‘laning:</p>
+              <p>
+                <span className='font-semibold text-white'>Telefon:</span> +998 99 818 42 00
+                (Sherzod)
+              </p>
+              <p>
+                <span className='font-semibold text-white'>Telegram:</span>{' '}
+                <a
+                  href='https://t.me/tritonium'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='text-blue-400 hover:text-blue-300 transition-colors'
+                >
+                  @tritonium
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
