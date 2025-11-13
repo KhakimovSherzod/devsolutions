@@ -2,6 +2,9 @@ export const metadata = {
   title: 'Maxfiylik Siyosati | Vido Dev Solution',
   description:
     'Vido Dev Solution foydalanuvchilar maʼlumotlarini qanday yig‘ishi, saqlashi va himoya qilishi haqida maʼlumot oling.',
+  alternates: {
+    canonical: 'https://vido.uz/privacy-policy',
+  },
 }
 
 export default function PrivacyPolicyPage() {

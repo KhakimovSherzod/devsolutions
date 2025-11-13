@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 
-const Uy = () => {
+const HomePage = () => {
   const [activeTab, setActiveTab] = useState('vebsaytlar')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -258,41 +258,92 @@ const Uy = () => {
   return (
     <div className='min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden'>
       <Head>
-        <title>
-          Professional Dasturiy Ta&apos;minot Ishlab Chiqish Xizmatlari | VIDO DevSolutions
-        </title>
-        <meta
-          name='description'
-          content="VIDO DevSolutions: Professional veb dasturlash, maxsus dasturiy ta'minot, CRM tizimlari, AI yechimlari, botlar va onlayn do'konlar yaratish xizmatlari."
+        {/* Basic SEO */}
+
+        {/* Optional structured data (JSON-LD for Google) */}
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'VIDO DevSolutions',
+                alternateName: 'DevSolutions',
+                url: 'https://vido.uz',
+                logo: 'https://vido.uz/og-image.png',
+                image: 'https://vido.uz/og-image.png',
+                description:
+                  "VIDO DevSolutions — professional veb dasturlash, maxsus dasturiy ta'minot, CRM tizimlari, AI yechimlari, botlar va onlayn do'konlar ishlab chiqish xizmatlari.",
+                foundingDate: '2022',
+                founder: {
+                  '@type': 'Person',
+                  name: 'VIDO Team',
+                },
+                address: {
+                  '@type': 'PostalAddress',
+                  addressCountry: 'UZ',
+                  addressLocality: 'Tashkent',
+                  postalCode: '100000',
+                },
+                contactPoint: {
+                  '@type': 'ContactPoint',
+                  telephone: '+998998184200',
+                  contactType: 'customer support',
+                  availableLanguage: ['Uzbek', 'English', 'Russian'],
+                },
+                areaServed: 'Worldwide',
+                brand: 'VIDO DevSolutions',
+                knowsAbout: [
+                  'Web development',
+                  'CRM systems',
+                  'AI solutions',
+                  'Chatbots',
+                  'Mobile applications',
+                  'ERP systems',
+                  'Automation',
+                  'E-commerce platforms',
+                  'SaaS development',
+                ],
+                serviceType: 'Custom software development',
+                services: [
+                  {
+                    '@type': 'Service',
+                    name: 'Veb dasturlash',
+                    description: 'Zamonaviy veb saytlar va onlayn platformalar ishlab chiqish.',
+                  },
+                  {
+                    '@type': 'Service',
+                    name: 'AI yechimlari',
+                    description:
+                      "Sun'iy intellekt asosidagi dasturlar va avtomatlashtirilgan tizimlar.",
+                  },
+                  {
+                    '@type': 'Service',
+                    name: 'CRM tizimlari',
+                    description: 'Biznes jarayonlarini boshqarish uchun maxsus CRM ishlab chiqish.',
+                  },
+                  {
+                    '@type': 'Service',
+                    name: 'Telegram va WhatsApp botlar',
+                    description: 'Avtomatik mijoz bilan aloqa uchun aqlli botlar yaratish.',
+                  },
+                ],
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'VIDO DevSolutions',
+                url: 'https://vido.uz',
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: 'https://vido.uz/search?q={search_term_string}',
+                  'query-input': 'required name=search_term_string',
+                },
+              },
+            ]),
+          }}
         />
-        <meta
-          name='keywords'
-          content="veb dasturlash, maxsus dasturiy ta'minot, CRM tizimi, AI yechimlari, Telegram bot, WhatsApp bot, onlayn do'kon, ERP tizimi, biznesni avtomatlashtirish"
-        />
-        <meta name='author' content='VIDO DevSolutions' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-        <meta
-          property='og:title'
-          content="Professional Dasturiy Ta'minot Ishlab Chiqish Xizmatlari | VIDO DevSolutions"
-        />
-        <meta
-          property='og:description'
-          content="VIDO DevSolutions: Veb saytlar, onlayn do'konlar, CRM tizimlari, AI yechimlari va botlar orqali biznesingizni rivojlantiring."
-        />
-        <meta property='og:type' content='website' />
-        <meta property='og:url' content='https://yourwebsite.com' />
-        <meta property='og:image' content='https://yourwebsite.com/og-image.png' />
-        <meta name='twitter:card' content='summary_large_image' />
-        <meta
-          name='twitter:title'
-          content="Professional Dasturiy Ta'minot Ishlab Chiqish Xizmatlari | VIDO DevSolutions"
-        />
-        <meta
-          name='twitter:description'
-          content="VIDO DevSolutions: Veb saytlar, onlayn do'konlar, CRM tizimlari, AI yechimlari va botlar orqali biznesingizni rivojlantiring."
-        />
-        <meta name='twitter:image' content='https://yourwebsite.com/og-image.png' />
       </Head>
 
       {/* 3D Background Canvas */}
@@ -812,22 +863,26 @@ const Uy = () => {
               </ul>
             </div>
             <div className='sm:col-span-2 lg:col-span-1'>
-              <h4 className='text-white font-bold text-lg mb-3 md:mb-4'>Ijtimoiy Tarmoqlar</h4>
+              <h4 className='text-white font-bold text-lg mb-3 md:mb-4'>Sahifalar</h4>
               <div className='flex flex-wrap gap-3 md:gap-4'>
-                {['Telegram', 'Instagram', 'LinkedIn', 'GitHub'].map(social => (
-                  <button
-                    key={social}
-                    className='text-gray-400 hover:text-white transition-colors text-sm md:text-base'
+                {[
+                  { title: 'Kontakt', link: '/contact' },
+                  { title: 'Biz Haqimizda', link: '/aboutus' },
+                ].map((pages, index) => (
+                  <Link
+                    href={pages.link}
+                    key={index}
+                    className='text-gray-400 hover:text-white transition-colors text-sm md:text-base hover:underline'
                   >
-                    {social}
-                  </button>
+                    {pages.title}
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
           <div className='border-t border-white/10 pt-6 md:pt-8 text-center'>
             <p className='text-gray-400 text-sm md:text-base'>
-              © 2024 VIDO DevSolutions. Barcha huquqlar himoyalangan.
+              © 2025 VIDO DevSolutions. Barcha huquqlar himoyalangan.
             </p>
           </div>
         </div>
@@ -836,4 +891,4 @@ const Uy = () => {
   )
 }
 
-export default Uy
+export default HomePage
